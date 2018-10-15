@@ -1,0 +1,27 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10000/eureka/
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+zuul:
+  routes:
+    employee:
+      path: /employee-v1/**
+      serviceId: employee-service
+    department:
+      path: /department-v1/**
+      serviceId: department-service
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+
+
+
